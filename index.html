@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arvi’s Fertilizers</title>
+
+    <!-- MOBILE FRIENDLY -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<script>
+let slideIndex = 0;
+const slides = document.querySelector(".slides");
+const totalSlides = document.querySelectorAll(".slides img").length;
+
+function moveSlide(step) {
+    slideIndex += step;
+    if (slideIndex < 0) slideIndex = totalSlides - 1;
+    if (slideIndex >= totalSlides) slideIndex = 0;
+    updateSlide();
+}
+
+function updateSlide() {
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+/* AUTO SLIDE */
+setInterval(() => {
+    moveSlide(1);
+}, 4000);
+
+/* MOBILE SWIPE */
+let startX = 0;
+
+slides.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+});
+
+slides.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) moveSlide(1);
+    if (endX - startX > 50) moveSlide(-1);
+});
+</script>
+
+<script>
+function toggleMenu() {
+    document.getElementById("nav-menu").classList.toggle("show");
+}
+</script>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-container">
+        <span class="brand">Arvi’s Fertilizers</span>
+
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <nav id="nav-menu">
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#products" onclick="toggleMenu()">Products</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- WHATSAPP FLOAT BUTTON -->
+<a href="https://wa.me/917893582282" 
+   class="whatsapp-float" 
+   target="_blank" 
+   title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp">
+</a>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- HEADER / HERO -->
+<!-- PRODUCT SLIDER -->
+<section class="section slider-section">
+    <h2>🌾 Featured Products</h2>
+
+    <div class="slider">
+        <div class="slides">
+            <img src="images/products/polyphos.png" alt="PolyPhos">
+            <img src="images/products/magnisol.png" alt="MagniSol">
+            <img src="images/products/complex.png" alt="Complex Fertilizer">
+        </div>
+
+        <button class="prev" onclick="moveSlide(-1)">❮</button>
+        <button class="next" onclick="moveSlide(1)">❯</button>
+    </div>
+</section>
+
+<section class="hero">
+    <div class="hero-content">
+        <img src="images/logo.png" alt="Arvi’s Fertilizers Logo" class="logo">
+        <h1>Arvi’s Fertilizers</h1>
+        <p>Growing Crops • Enriching Soil • Empowering Farmers</p>
+        <a href="#products" class="btn">Our Products</a>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <h2>🌱 About Us</h2>
+    <p>
+        Arvi’s Fertilizers provides high-quality agricultural fertilizers
+        designed to improve crop yield, soil fertility, and farmer income.
+        We believe in sustainable and scientific farming solutions.
+    </p>
+</section>
+<!-- PRODUCTS -->
+<section class="section products" id="products">
+    <h2>🚜 Our Products</h2>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="images/products/polyphos.png" alt="Premia PolyPhos">
+            <h3>Premia PolyPhos</h3>
+            <p>Dihydrate Polyhalite – 25kg</p>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/magnisol.png" alt="Premia MagniSol">
+            <h3>Premia MagniSol</h3>
+            <p>Magnesium Rich Fertilizer – 25kg</p>
+        </div>
+
+        <div class="product-card">
+            <img src="images/products/complex.png" alt="Premia Complex">
+            <h3>Premia Complex</h3>
+            <p>Balanced Nutrient Fertilizer – 25kg</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+    <h2>📞 Contact Us</h2>
+    <p><b>Company:</b> Arvi’s Fertilizers</p>
+    <p><b>Phone:</b> +91 7893582282</p>
+    <p><b>Email:</b> info@arvisfertilizers.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Arvi’s Fertilizers | Powered by keerthi 🌿</p>
+</footer>
+
+<!-- JS -->
+<script src="particles.js"></script>
+
+</body>
+</html>
